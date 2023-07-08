@@ -1,0 +1,26 @@
+The famous rope cutting problems reads - Given a rope of length n, you need to find the maximum number of pieces you can make such that the length of every piece is in set (a,b,c) for the given three values of a,b,c.
+
+This problem is also known as rod cutting problem in x, y, z segments,
+
+So we will be getting values of n, a, b, c. So we have a rope of n length and we have cut this rope to obtain the maximum pieces in such a way that the length of pieces should either be a or b or c.
+
+function findMaximumCut(n, a, b, c) {
+  if(n===0) {
+    return 0
+  }
+  
+  if(n<0) {
+    return -1
+  }
+  
+  let temp1 = findMaximumCut(n-a, a,b,c)
+  let temp2= findMaximumCut(n-b, a, b, c)
+  let temp3 = findMaximumCut(n-c, a, b, c)
+  let pieces = Math.max(temp1, Math.max(temp2, temp3))
+  if(pieces === -1) {
+    return -1
+  }
+  return pieces + 1
+}
+
+console.log(findMaximumCut(15, 5,8,7))
