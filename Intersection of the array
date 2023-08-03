@@ -1,0 +1,27 @@
+// what is the intersection of an array
+// The intersection of array A and B is the set of all elements which are common to both A and B.
+
+function unionArr(nums1, nums2) {
+  let m = nums1.length-1
+  let n = nums2.length-1
+  let i=0, j=0, k=0
+  let nums3 = []
+  while(i<=m && j <=n) {
+    if(nums1[i] < nums2[j]) {
+      nums3[k++] = nums1[i++]
+    } else if(nums2[j] < nums1[i]) {
+      j++
+    } else {
+      i++
+      j++
+    }
+  }
+  for(; i<=m ;i++) {
+    nums3[k++] = nums1[i++]
+  }
+  return nums3
+}
+
+let nums1 = [2,6,10,15,25]
+let nums2 = [3,6,7,15,20,30]
+console.log(unionArr(nums1, nums2)) //[2, 10, 25]
